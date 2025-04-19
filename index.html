@@ -152,9 +152,9 @@
             headerContainer.classList.toggle('hidden');
             // Change the icon dynamically
             if (headerContainer.classList.contains('hidden')) {
-                toggleIcon.innerHTML = '<path d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180Z"/>'; // Arrow up
-            } else {
                 toggleIcon.innerHTML = '<path d="M480-840 300-660l58 58 122-122 122 122 58-58-180-180Z"/>'; // Arrow down
+            } else {
+                toggleIcon.innerHTML = '<path d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180Z"/>'; // Arrow up
             }
         });
 
@@ -162,7 +162,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth < 900) {
                 headerContainer.classList.add('hidden');
-                toggleIcon.innerHTML = '<path d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180Z"/>'; // Arrow up
+                toggleIcon.innerHTML = '<path d="M480-840 300-660l58 58 122-122 122 122 58-58-180-180Z"/>'; // Arrow down
             }
         });
     </script>
