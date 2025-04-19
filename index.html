@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="container" id="header-container">
             <h1>Analýza prodejních dat e-shopu</h1>
             <nav>
                 <ul>
@@ -20,6 +20,12 @@
                 </ul>
             </nav>
         </div>
+        <!-- Toggle button with default "arrow up" icon -->
+        <button id="toggle-header" class="toggle-button">
+            <svg id="toggle-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                <path d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180Z"/>
+            </svg>
+        </button>
     </header>
 
     <main class="container">
@@ -136,6 +142,59 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        const toggleButton = document.getElementById('toggle-header');
+        const headerContainer = document.getElementById('header-container');
+        const toggleIcon = document.getElementById('toggle-icon');
+
+        // Function to toggle the header visibility
+        toggleButton.addEventListener('click', () => {
+            headerContainer.classList.toggle('hidden');
+            // Change the icon dynamically
+            if (headerContainer.classList.contains('hidden')) {
+                toggleIcon.innerHTML = '<path d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180Z"/>'; // Arrow up
+            } else {
+                toggleIcon.innerHTML = '<path d="M480-840 300-660l58 58 122-122 122 122 58-58-180-180Z"/>'; // Arrow down
+            }
+        });
+
+        // Check screen width on page load and start with the header hidden if width < 900px
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.innerWidth < 900) {
+                headerContainer.classList.add('hidden');
+                toggleIcon.innerHTML = '<path d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180Z"/>'; // Arrow up
+            }
+        });
+    </script>
+
+    <style>
+        .toggle-button {
+            background-color: #007BFF;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            position: fixed; /* Keep the button visible */
+            top: 10px;
+            right: 10px; /* Move the button to the right corner */
+            z-index: 1000; /* Ensure it stays above other elements */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-button svg {
+            fill: #e3e3e3; /* Ensure the SVG icon matches the desired color */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            #toggle-header {
+                display: block;
+            }
+        }
+    </style>
 </body>
 </html>
