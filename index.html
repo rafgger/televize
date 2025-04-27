@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analýza prodejních dat e-shopu</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.3.3/highcharts.js"></script>
+    <!-- <script src="chart.js"></script> -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="./js/2_mesicni_trendy_trzeb.js"></script>
+    <script src="./js/3.js"></script>
 </head>
 <body>
     <header>
@@ -64,14 +71,22 @@
                 <div class="image-container">
                     <img src="images/1_celkove_trzby_podle_kategorii.png" alt="Celkové tržby podle kategorií" class="responsive-img">
                 </div>
+                <div id="salesChart" style="width: 100%; height: 500px;"></div>
+
+
                 <p>Při analýze měsíčních trendů jsme zjistili, že kategorie Televize zůstává nejvýnosnější kategorií ve všech sledovaných měsících (únor až květen 2022). Nejvyšší tržby v kategorii Televize byly zaznamenány v březnu 2022 (380 900 Kč).</p>
-                <div class="image-container">
+                <!-- <div class="image-container">
                     <img src="images/2_mesicni_trendy_trzeb.png" alt="Měsíční trendy tržeb" class="responsive-img">
-                </div>
+                </div> -->
+                <div id="container2"></div>
+                <!-- <div id="container"></div> -->
+
+                
                 <p>Podíl jednotlivých kategorií na celkových tržbách se v průběhu měsíců mírně mění, ale Televize zůstávají dominantní kategorií ve všech měsících.</p>
                 <div class="image-container">
                     <img src="images/3_podil_kategorii_na_trzbach.png" alt="Podíl kategorií na tržbách" class="responsive-img">
                 </div>
+                <div id="container3"></div>
             </article>
 
             <article id="den-objednavky">
@@ -109,6 +124,84 @@
                 <div class="image-container">
                     <img src="images/7_denni_trzby_v_case.png" alt="Denní tržby v čase" class="responsive-img">
                 </div>
+                <div id="container6" style="height: 600px; width: 100%;"></div>
+
+                <script>
+                Highcharts.chart('container6', {
+                    chart: {
+                        type: 'scatter',
+                        zoomType: 'xy'
+                    },
+                    title: {
+                        text: 'Denní tržby před a po změně marketingového rozpočtu'
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        title: {
+                            text: 'Datum'
+                        },
+                        plotLines: [{
+                            color: 'red',
+                            width: 2,
+                            value: Date.UTC(2022, 2, 18), // March 18, 2022 (Month is 0-indexed)
+                            dashStyle: 'Dash',
+                            label: {
+                                text: 'Změna rozpočtu (18.3.2022)',
+                                align: 'left',
+                                rotation: 0,
+                                y: 15,
+                                style: {
+                                    color: 'red',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        }]
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Tržby'
+                        },
+                        labels: {
+                            formatter: function() {
+                                return this.value.toLocaleString('cs-CZ') + ' Kč';
+                            }
+                        }
+                    },
+                    tooltip: {
+                        pointFormat: '<b>{series.name}</b><br>Datum: {point.x:%d.%m.%Y}<br>Tržby: {point.y:,.0f} Kč'
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+                    series: [{
+                        name: 'Před změnou',
+                        color: '#1f77b4',
+                        data: [
+                            // Example data before change (replace with your real data)
+                            [Date.UTC(2022, 1, 1), 30000],
+                            [Date.UTC(2022, 1, 5), 45000],
+                            [Date.UTC(2022, 1, 10), 20000],
+                            [Date.UTC(2022, 1, 15), 50000],
+                            [Date.UTC(2022, 2, 10), 35000]
+                        ]
+                    }, {
+                        name: 'Po změně',
+                        color: '#ff7f0e',
+                        data: [
+                            // Example data after change (replace with your real data)
+                            [Date.UTC(2022, 2, 19), 60000],
+                            [Date.UTC(2022, 2, 25), 110000],
+                            [Date.UTC(2022, 3, 10), 75000],
+                            [Date.UTC(2022, 4, 5), 90000],
+                            [Date.UTC(2022, 4, 20), 45000]
+                        ]
+                    }]
+                });
+                </script>
+
+
                 <p>Zajímavé je, že při analýze průměrných denních tržeb podle kategorií jsme zaznamenali pokles ve všech kategoriích. Tento rozpor s celkovým nárůstem tržeb může být způsoben tím, že po změně rozpočtu se zvýšil počet objednávek obsahujících více položek z různých kategorií, což zvýšilo celkové tržby, ale snížilo průměrné denní tržby v jednotlivých kategoriích.</p>
             </article>
         </section>
@@ -196,5 +289,8 @@
             }
         }
     </style>
+    <script src="js/1_celkove_trzby_podle_kategorii.js"></script>
+    <script src="./js/2_mesicni_trendy_trzeb.js"></script>
+    <script src="./js/3.js"></script>
 </body>
 </html>
