@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analýza prodejních dat e-shopu</title>
     <link rel="stylesheet" href="css/styles.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script> -->
+    <!-- Přidání Chart.js knihovny -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.3.3/highcharts.js"></script>
-    <!-- <script src="chart.js"></script> -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="./js/2_mesicni_trendy_trzeb.js"></script>
-    <script src="./js/3.js"></script>
 </head>
 <body>
     <header>
@@ -27,7 +23,7 @@
                 </ul>
             </nav>
         </div>
-        <!-- Toggle button with default "arrow up" icon -->
+                <!-- Toggle button with default "arrow up" icon -->
         <button id="toggle-header" class="toggle-button">
             <svg id="toggle-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
                 <path d="M480-120 300-300l58-58 122 122 122-122 58 58-180 180Z"/>
@@ -40,10 +36,10 @@
             <h2>Úvod</h2>
             <p>Tato zpráva obsahuje analýzu prodejních dat e-shopu na základě poskytnutého Excel souboru. Analýza se zaměřuje na zodpovězení čtyř klíčových otázek:</p>
             <ol>
+                <li>Jaký byl dopad zvýšení rozpočtu na online marketing od 18. března 2022?</li>
                 <li>Která kategorie produktů má nejvyšší tržby a mění se to v průběhu měsíců?</li>
                 <li>Který den v týdnu má nejvyšší počet objednávek?</li>
-                <li>Která kategorie je nejčastěji nakupována společně s produkty z kategorie Televize?</li>
-                <li>Jaký byl dopad zvýšení rozpočtu na online marketing od 18. března 2022?</li>
+                <li>Která kategorie je nejčastěji nakupována společně s produkty z kategorie Televize?</li>                
             </ol>
         </section>
 
@@ -62,70 +58,13 @@
         <section id="vysledky">
             <h2>Výsledky analýzy</h2>
 
-            <article id="kategorie-trzby">
-                <h3>1. Kategorie s nejvyššími tržbami</h3>
-                <div class="highlight-box">
-                    <p><strong>Odpověď: Kategorie Televize má nejvyšší tržby (1 205 680 Kč) a zůstává nejvýnosnější kategorií ve všech sledovaných měsících.</strong></p>
-                </div>
-                <p>Analýza celkových tržeb podle kategorií produktů ukázala, že kategorie Televize jednoznačně dominuje s celkovými tržbami 1 205 680 Kč. Na druhém místě jsou Tablety (623 660 Kč), následované kategorií Mobilní telefony (614 460 Kč) a Audio (416 370 Kč).</p>
-                <div class="image-container">
-                    <img src="images/1_celkove_trzby_podle_kategorii.png" alt="Celkové tržby podle kategorií" class="responsive-img">
-                </div>
-                <div id="salesChart" style="width: 100%; height: 500px;"></div>
-
-
-                <p>Při analýze měsíčních trendů jsme zjistili, že kategorie Televize zůstává nejvýnosnější kategorií ve všech sledovaných měsících (únor až květen 2022). Nejvyšší tržby v kategorii Televize byly zaznamenány v březnu 2022 (380 900 Kč).</p>
-                <!-- <div class="image-container">
-                    <img src="images/2_mesicni_trendy_trzeb.png" alt="Měsíční trendy tržeb" class="responsive-img">
-                </div> -->
-                <div id="container2"></div>
-                <!-- <div id="container"></div> -->
-
-                
-                <p>Podíl jednotlivých kategorií na celkových tržbách se v průběhu měsíců mírně mění, ale Televize zůstávají dominantní kategorií ve všech měsících.</p>
-                <div class="image-container">
-                    <img src="images/3_podil_kategorii_na_trzbach.png" alt="Podíl kategorií na tržbách" class="responsive-img">
-                </div>
-                <div id="container3"></div>
-            </article>
-
-            <article id="den-objednavky">
-                <h3>2. Den v týdnu s nejvyšším počtem objednávek</h3>
-                <div class="highlight-box">
-                    <p><strong>Odpověď: Pondělí a sobota mají shodně nejvyšší počet objednávek (13).</strong></p>
-                </div>
-                <p>Analýza počtu objednávek podle dne v týdnu ukázala, že pondělí a sobota mají shodně nejvyšší počet objednávek (13). Následuje pátek (12 objednávek), středa (11 objednávek), úterý a neděle (shodně 10 objednávek) a čtvrtek (9 objednávek).</p>
-                <div class="image-container">
-                    <img src="images/4_pocet_objednavek_podle_dne.png" alt="Počet objednávek podle dne v týdnu" class="responsive-img">
-                </div>
-            </article>
-
-            <article id="kategorie-s-tv">
-                <h3>3. Kategorie nejčastěji nakupovaná společně s televizemi</h3>
-                <div class="highlight-box">
-                    <p><strong>Odpověď: Kategorie Audio je nejčastěji nakupována společně s televizemi (13 společných nákupů).</strong></p>
-                </div>
-                <p>Analýza objednávek obsahujících produkty z kategorie Televize ukázala, že nejčastěji jsou s televizemi nakupovány produkty z kategorie Audio (13 společných nákupů). Těsně následuje kategorie Mobilní telefony (12 společných nákupů) a s větším odstupem kategorie Tablety (7 společných nákupů).</p>
-                <div class="image-container">
-                    <img src="images/5_kategorie_s_televizemi.png" alt="Kategorie nakupované společně s televizemi" class="responsive-img">
-                </div>
-            </article>
-
             <article id="marketing-rozpocet">
-                <h3>4. Dopad zvýšeného marketingového rozpočtu</h3>
+                <h3>1. Dopad zvýšeného marketingového rozpočtu</h3>
                 <div class="highlight-box">
                     <p><strong>Odpověď: Po zvýšení rozpočtu na online marketing došlo k výraznému nárůstu průměrných denních tržeb o 134,45 % (z 28 243,56 Kč na 66 217,08 Kč).</strong></p>
                 </div>
-                <p>Analýza dopadu zvýšeného marketingového rozpočtu od 18. března 2022 ukázala významný nárůst průměrných denních tržeb o 134,45 %. Průměrné denní tržby vzrostly z 28 243,56 Kč před změnou rozpočtu na 66 217,08 Kč po změně.</p>
-                <div class="image-container">
-                    <img src="images/6_prumerne_trzby_pred_po.png" alt="Průměrné denní tržby před a po změně rozpočtu" class="responsive-img">
-                </div>
-                <p>Také došlo k nárůstu průměrného denního počtu objednávek o 37,50 % (z 1,00 na 1,38 objednávky denně) a průměrné hodnoty objednávky o 70,51 % (z 28 243,56 Kč na 48 157,88 Kč).</p>
-                <div class="image-container">
-                    <img src="images/7_denni_trzby_v_case.png" alt="Denní tržby v čase" class="responsive-img">
-                </div>
                 <div id="container6" style="height: 600px; width: 100%;"></div>
-
+<!-- 
                 <script>
                 Highcharts.chart('container6', {
                     chart: {
@@ -179,41 +118,149 @@
                         name: 'Před změnou',
                         color: '#1f77b4',
                         data: [
-                            // Example data before change (replace with your real data)
-                            [Date.UTC(2022, 1, 1), 30000],
-                            [Date.UTC(2022, 1, 5), 45000],
-                            [Date.UTC(2022, 1, 10), 20000],
-                            [Date.UTC(2022, 1, 15), 50000],
-                            [Date.UTC(2022, 2, 10), 35000]
+                            [Date.UTC(2022, 1, 1), 57980],
+                            [Date.UTC(2022, 1, 2), 29670],
+                            [Date.UTC(2022, 1, 3), 14980],
+                            [Date.UTC(2022, 1, 4), 25490],
+                            [Date.UTC(2022, 1, 5), 46480],
+                            [Date.UTC(2022, 1, 6), 5980],
+                            [Date.UTC(2022, 1, 7), 17990],
+                            [Date.UTC(2022, 1, 8), 29990],
+                            [Date.UTC(2022, 1, 9), 63980],
+                            [Date.UTC(2022, 1, 10), 20980],
+                            [Date.UTC(2022, 1, 11), 5690],
+                            [Date.UTC(2022, 1, 12), 52980],
+                            [Date.UTC(2022, 1, 13), 38990],
+                            [Date.UTC(2022, 1, 14), 14980],
+                            [Date.UTC(2022, 1, 15), 37480],
+                            [Date.UTC(2022, 1, 16), 23970],
+                            [Date.UTC(2022, 1, 17), 10490],
+                            [Date.UTC(2022, 1, 18), 5690],
+                            [Date.UTC(2022, 1, 19), 68470],
+                            [Date.UTC(2022, 1, 20), 24990],
+                            [Date.UTC(2022, 1, 21), 52480],
+                            [Date.UTC(2022, 1, 22), 25490],
+                            [Date.UTC(2022, 1, 23), 17970],
+                            [Date.UTC(2022, 1, 24), 23680],
+                            [Date.UTC(2022, 1, 25), 38990],
+                            [Date.UTC(2022, 1, 26), 14980],
+                            [Date.UTC(2022, 1, 27), 10490],
+                            [Date.UTC(2022, 1, 28), 37480],
+                            [Date.UTC(2022, 2, 1), 5980],
+                            [Date.UTC(2022, 2, 2), 52980],
+                            [Date.UTC(2022, 2, 3), 50680],
+                            [Date.UTC(2022, 2, 4), 7490],
+                            [Date.UTC(2022, 2, 5), 66970],
+                            [Date.UTC(2022, 2, 6), 10490],
+                            [Date.UTC(2022, 2, 7), 17990],
+                            [Date.UTC(2022, 2, 8), 10490],
+                            [Date.UTC(2022, 2, 9), 29990],
+                            [Date.UTC(2022, 2, 10), 44990],
+                            [Date.UTC(2022, 2, 11), 11990],
+                            [Date.UTC(2022, 2, 12), 13180],
+                            [Date.UTC(2022, 2, 13), 25490],
+                            [Date.UTC(2022, 2, 14), 38990],
+                            [Date.UTC(2022, 2, 15), 5980],
+                            [Date.UTC(2022, 2, 16), 17990],
+                            [Date.UTC(2022, 2, 17), 40480]
                         ]
                     }, {
                         name: 'Po změně',
                         color: '#ff7f0e',
                         data: [
                             // Example data after change (replace with your real data)
-                            [Date.UTC(2022, 2, 19), 60000],
-                            [Date.UTC(2022, 2, 25), 110000],
-                            [Date.UTC(2022, 3, 10), 75000],
-                            [Date.UTC(2022, 4, 5), 90000],
-                            [Date.UTC(2022, 4, 20), 45000]
+                            [Date.UTC(2022, 2, 18), 50680],
+                            [Date.UTC(2022, 2, 19), 24990],
+                            [Date.UTC(2022, 2, 20), 14980],
+                            [Date.UTC(2022, 2, 21), 27990],
+                            [Date.UTC(2022, 2, 22), 41980],
+                            [Date.UTC(2022, 2, 23), 57980],
+                            [Date.UTC(2022, 2, 24), 109130],
+                            [Date.UTC(2022, 2, 30), 31460],
+                            [Date.UTC(2022, 3, 2), 68980],
+                            [Date.UTC(2022, 3, 4), 236240],
+                            [Date.UTC(2022, 3, 17), 57980],
+                            [Date.UTC(2022, 3, 18), 80470],
+                            [Date.UTC(2022, 3, 22), 32980],
+                            [Date.UTC(2022, 3, 23), 80640],
+                            [Date.UTC(2022, 3, 29), 166900],
+                            [Date.UTC(2022, 4, 7), 80150],
+                            [Date.UTC(2022, 4, 11), 28480],
+                            [Date.UTC(2022, 4, 14), 85470],
+                            [Date.UTC(2022, 4, 17), 17680],
+                            [Date.UTC(2022, 4, 18), 71970],
+                            [Date.UTC(2022, 4, 22), 23970],
+                            [Date.UTC(2022, 4, 24), 46170],
+                            [Date.UTC(2022, 4, 27), 69980],
+                            [Date.UTC(2022, 4, 29), 81960]
                         ]
                     }]
+                   
                 });
-                </script>
-
-
+                </script> -->
+                <p>Analýza dopadu zvýšeného marketingového rozpočtu od 18. března 2022 ukázala významný nárůst průměrných denních tržeb o 134,45 %. Průměrné denní tržby vzrostly z 28 243,56 Kč před změnou rozpočtu na 66 217,08 Kč po změně.</p>
+                <div class="chart-container">
+                    <canvas id="marketingImpactChart"></canvas>
+                </div>
+                <p>Také došlo k nárůstu průměrného denního počtu objednávek o 37,50 % (z 1,00 na 1,38 objednávky denně) a průměrné hodnoty objednávky o 70,51 % (z 28 243,56 Kč na 48 157,88 Kč).</p>
+                <div class="chart-container">
+                    <canvas id="categoryPercentChangeChart"></canvas>
+                </div>
                 <p>Zajímavé je, že při analýze průměrných denních tržeb podle kategorií jsme zaznamenali pokles ve všech kategoriích. Tento rozpor s celkovým nárůstem tržeb může být způsoben tím, že po změně rozpočtu se zvýšil počet objednávek obsahujících více položek z různých kategorií, což zvýšilo celkové tržby, ale snížilo průměrné denní tržby v jednotlivých kategoriích.</p>
             </article>
+
+            <article id="kategorie-trzby">
+                <h3>2. Kategorie s nejvyššími tržbami</h3>
+                <div class="highlight-box">
+                    <p><strong>Odpověď: Kategorie Televize má nejvyšší tržby (1 205 680 Kč) a zůstává nejvýnosnější kategorií ve všech sledovaných měsících.</strong></p>
+                </div>
+                <p>Analýza celkových tržeb podle kategorií produktů ukázala, že kategorie Televize jednoznačně dominuje s celkovými tržbami 1 205 680 Kč. Na druhém místě jsou Tablety (623 660 Kč), následované kategorií Mobilní telefony (614 460 Kč) a Audio (416 370 Kč).</p>
+                <div class="chart-container">
+                    <canvas id="categoryRevenueChart"></canvas>
+                </div>
+                <p>Při analýze měsíčních trendů jsme zjistili, že kategorie Televize zůstává nejvýnosnější kategorií ve všech sledovaných měsících (únor až květen 2022). Nejvyšší tržby v kategorii Televize byly zaznamenány v březnu 2022 (380 900 Kč).</p>
+                <div class="chart-container">
+                    <canvas id="monthlyTrendsChart"></canvas>
+                </div>
+                <p>Podíl jednotlivých kategorií na celkových tržbách se v průběhu měsíců mírně mění, ale Televize zůstávají dominantní kategorií ve všech měsících.</p>
+                <div class="chart-container">
+                    <canvas id="categoryShareChart"></canvas>
+                </div>
+            </article>
+
+            <article id="den-objednavky">
+                <h3>3. Den v týdnu s nejvyšším počtem objednávek</h3>
+                <div class="highlight-box">
+                    <p><strong>Odpověď: Pondělí a sobota mají shodně nejvyšší počet objednávek (13).</strong></p>
+                </div>
+                <p>Analýza počtu objednávek podle dne v týdnu ukázala, že pondělí a sobota mají shodně nejvyšší počet objednávek (13). Následuje pátek (12 objednávek), středa (11 objednávek), úterý a neděle (shodně 10 objednávek) a čtvrtek (9 objednávek).</p>
+                <div class="chart-container">
+                    <canvas id="ordersByDayChart"></canvas>
+                </div>
+            </article>
+
+            <article id="kategorie-s-tv">
+                <h3>4. Kategorie nejčastěji nakupovaná společně s televizemi</h3>
+                <div class="highlight-box">
+                    <p><strong>Odpověď: Kategorie Audio je nejčastěji nakupována společně s televizemi (13 společných nákupů).</strong></p>
+                </div>
+                <p>Analýza objednávek obsahujících produkty z kategorie Televize ukázala, že nejčastěji jsou s televizemi nakupovány produkty z kategorie Audio (13 společných nákupů). Těsně následuje kategorie Mobilní telefony (12 společných nákupů) a s větším odstupem kategorie Tablety (7 společných nákupů).</p>
+                <div class="chart-container">
+                    <canvas id="categoriesWithTvChart"></canvas>
+                </div>
+            </article>
+
+
         </section>
 
         <section id="zaver">
             <h2>Závěr</h2>
             <p>Na základě provedené analýzy můžeme shrnout následující klíčové poznatky:</p>
             <ol>
+                <li><strong>Zvýšení rozpočtu na online marketing</strong> od 18. března 2022 mělo výrazně pozitivní dopad na tržby, s nárůstem průměrných denních tržeb o 134,45 %.</li>
                 <li><strong>Kategorie Televize</strong> je jednoznačně nejvýnosnější kategorií s celkovými tržbami 1 205 680 Kč a zůstává nejvýnosnější ve všech sledovaných měsících.</li>
                 <li><strong>Pondělí a sobota</strong> jsou dny s nejvyšším počtem objednávek (shodně 13), což naznačuje, že zákazníci nakupují jak na začátku pracovního týdne, tak během víkendu.</li>
                 <li><strong>Kategorie Audio</strong> je nejčastěji nakupována společně s televizemi (13 společných nákupů), což naznačuje potenciál pro cross-selling a bundling těchto produktů.</li>
-                <li><strong>Zvýšení rozpočtu na online marketing</strong> od 18. března 2022 mělo výrazně pozitivní dopad na tržby, s nárůstem průměrných denních tržeb o 134,45 %.</li>
             </ol>
         </section>
 
@@ -221,10 +268,10 @@
             <h2>Doporučení</h2>
             <p>Na základě provedené analýzy doporučujeme:</p>
             <ol>
+                <li><strong>Pokračovat v investicích do online marketingu</strong>, které se ukázaly jako velmi efektivní pro zvýšení tržeb.</li>
                 <li><strong>Zaměřit se na kategorii Televize</strong> jako na klíčovou kategorii pro další rozvoj a marketingové aktivity.</li>
                 <li><strong>Optimalizovat marketingové kampaně</strong> pro pondělí a sobotu, kdy zákazníci nakupují nejčastěji.</li>
-                <li><strong>Vytvořit balíčky produktů</strong> kombinující televizory a audio zařízení, případně nabízet slevy při nákupu obou kategorií.</li>
-                <li><strong>Pokračovat v investicích do online marketingu</strong>, které se ukázaly jako velmi efektivní pro zvýšení tržeb.</li>
+                <li><strong>Vytvořit balíčky produktů</strong> kombinující televizory a audio zařízení, případně nabízet slevy při nákupu obou kategorií.</li>                
             </ol>
         </section>
     </main>
@@ -234,6 +281,7 @@
             <p>&copy; 2025 Analýza prodejních dat e-shopu</p>
         </div>
     </footer>
+
 
     <script>
         const toggleButton = document.getElementById('toggle-header');
@@ -289,8 +337,12 @@
             }
         }
     </style>
-    <script src="js/1_celkove_trzby_podle_kategorii.js"></script>
-    <script src="./js/2_mesicni_trendy_trzeb.js"></script>
-    <script src="./js/3.js"></script>
+
+    <!-- Načtení dat pro grafy -->
+    <script src="data/chart_data.js"></script>
+    <!-- Načtení skriptu pro vykreslení grafů -->
+    <script src="js/charts.js"></script>
+    <!-- Původní JS pro interaktivitu stránky -->
+    <script src="js/main.js"></script>
 </body>
 </html>
