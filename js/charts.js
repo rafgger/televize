@@ -95,6 +95,31 @@ document.addEventListener('DOMContentLoaded', function() {
                     tooltip: {
                         pointFormat: '<b>{series.name}</b><br>Datum: {point.x:%d.%m.%Y}<br>Tržby: {point.y:,.0f} Kč'
                     },
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 900
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'top'
+                                }
+                            }
+                        }, {
+                            condition: {
+                                minWidth: 901
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'vertical',
+                                    align: 'right',
+                                    verticalAlign: 'middle'
+                                }
+                            }
+                        }]
+                    },
                     legend: {
                         layout: 'vertical',
                         align: 'right',
