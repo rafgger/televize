@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             dashStyle: 'Dash',
                             label: {
                                 text: 'Změna rozpočtu (18.3.2022)',
-                                align: 'left',
+                                align: window.innerWidth <= 900 ? 'center' : 'left',
                                 rotation: 0,
                                 y: 15,
                                 style: {
@@ -94,8 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     tooltip: {
                         pointFormat: '<b>{series.name}</b><br>Datum: {point.x:%d.%m.%Y}<br>Tržby: {point.y:,.0f} Kč'
-                    },
-                    responsive: {
+                    },                    responsive: {
                         rules: [{
                             condition: {
                                 maxWidth: 900
@@ -135,8 +134,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         data: dailyRevenuesData.afterChange
                     }]
                 });
-                
 
+                // Add resize handler for plot line label
+                window.addEventListener('resize', function() {
+                    let chart = Highcharts.charts.find(c => c && c.renderTo.id === 'container6');
+                    if (chart && chart.xAxis[0].plotLinesAndBands[0]) {
+                        chart.xAxis[0].plotLinesAndBands[0].options.label.align = window.innerWidth <= 900 ? 'center' : 'left';
+                        chart.redraw();
+                    }
+                });
     
     // 1. Graf: Celkové tržby podle kategorií produktů
     const categoryRevenueCtx = document.getElementById('categoryRevenueChart').getContext('2d');
@@ -350,12 +356,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const ordersByDayChart = new Chart(ordersByDayCtx, {
         type: 'bar',
         data: {
-            labels: ordersByDayData.days,
-            datasets: [{
+            labels: ordersByDayData.days,            datasets: [{
                 label: 'Počet objednávek',
                 data: ordersByDayData.counts,
-                backgroundColor: 'rgba(153, 102, 255, 0.8)',
-                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.8)',  // Pondělí - modrá
+                    'rgba(255, 159, 64, 0.8)',  // Úterý - oranžová
+                    'rgba(75, 192, 192, 0.8)',  // Středa - tyrkysová
+                    'rgba(255, 99, 132, 0.8)',  // Čtvrtek - růžová
+                    'rgba(153, 102, 255, 0.8)', // Pátek - fialová
+                    'rgba(255, 206, 86, 0.8)',  // Sobota - žlutá
+                    'rgba(201, 203, 207, 0.8)'  // Neděle - šedá
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(201, 203, 207, 1)'
+                ],
                 borderWidth: 1
             }]
         },
